@@ -4,7 +4,7 @@
   "private": true,
   "description": "Common belief platform.",
   "scripts": {
-    "build": "webpack --config config/webpack.prod.js --bail",
+    "build": "webpack --bail",
     "start": "webpack-dev-server"
   },
   "keywords": [],
