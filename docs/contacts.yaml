@@ -1,0 +1,36 @@
+get:
+  tags:
+    - contacts
+  summary: List
+  description: Retrieve a list of based on search criteria
+  operationId: listContacts
+  produces:
+    - application/json
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Contact'
+post:
+  tags: 
+    - contacts
+  summary: Create
+  description: Create a new contacts
+  operationId: createContact
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: body
+      name: body
+      description: Contact details
+      required: true
+      schema:
+        allOf:
+          - $ref: 'definitions.yaml#/ContactParameters'
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Contact' 

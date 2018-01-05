@@ -1,0 +1,49 @@
+get:
+  tags:
+    - contacts
+  summary: Retrieve
+  description: Retrieve
+  operationId: retrieveContact
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Contact'
+
+patch:
+  tags:
+    - contacts
+  summary: Update
+  descrition: Update
+  operationId: updateContact
+  consumes:
+    - application/json
+  produces:
+    - application/json    
+  parameters:
+    - in: body
+      name: body
+      description: Contact details
+      required: true
+      schema:
+        type: object
+        allOf:
+          - $ref: 'definitions.yaml#/ContactParameters'      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Contact'
+delete:
+  tags:
+    - contacts
+  summary: Delete
+  descrition: Delete 
+  operationId: deleteContact
+  produces:
+    - application/json       
+  responses:
+    '200':
+      description: Success

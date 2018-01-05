@@ -1,0 +1,40 @@
+get:
+  tags:
+    - events
+  summary: List
+  produces:
+    - application/json
+  responses:
+    '200':
+      description: Success
+      schema:
+        type: array
+        items: 
+          - $ref: 'definitions.yaml#/Event'
+post:
+  tags: 
+    - events
+  summary: Create
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: body
+      name: body
+      description: Event details
+      required: true
+      schema:
+        allOf:
+          - $ref: 'definitions.yaml#/EventParameters'
+          - properties:
+              contacts:
+                description: Contact Records
+                type: array
+                items:
+                  $ref: 'definitions.yaml#/ContactParameters'
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Event'

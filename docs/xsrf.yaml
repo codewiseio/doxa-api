@@ -1,0 +1,14 @@
+get:
+  tags:
+    - xsrf
+  summary: Retrieve Token
+  description: Provide a xsrf token for api clients. Clients 
+    must send the token on all modifying requests, put, patch, and delete.
+  operationId: xsrfToken
+  produces:
+    - application/json
+  responses:
+    '200':
+      description: Success
+      schema:
+        type: none

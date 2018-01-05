@@ -39,6 +39,8 @@ x-servers:
   #   description: Sandbox server
 paths:
   $ref: paths.yaml
+
+
 definitions:
   $ref: definitions.yaml
   

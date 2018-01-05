@@ -1,0 +1,110 @@
+get:
+  tags:
+    - users
+  summary: List Users
+  description: List and search users. Only available to super users.
+  operationId: listUsers
+  consumes:
+    - application/json
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+        type: array
+        items:
+          $ref: 'definitions.yaml#/User'            
+    '403':
+      description: Forbidden
+      schema:
+        type: object
+        properties:
+          status:
+            description: Status
+            type: string
+            enum:
+              - fail
+            example: fail
+          message: 
+            type: string
+            description: Message
+post:
+  tags:
+    - users
+  summary: Create User
+  description: |
+    Unauthenticated users can register for new accounts. New `organization`, `person` and `contact` records will be
+    created from supplied data.
+  operationId: createUser
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: body
+      name: body
+      description: User account
+      required: true
+      schema:
+        type: object
+        properties:
+          email:
+            description: Email address associated with the user
+            type: string
+            example: test@example.com
+          password:
+            description: Password
+            type: string
+            example: secret
+          person:
+            description: Person
+            type: object
+            required: true
+            $ref: 'definitions.yaml#/Person'
+          contacts:
+            description: Contact Records
+            type: array
+            items:
+              $ref: 'definitions.yaml#/Contact'
+          organization:
+            description: Organization
+            type: object
+            required: true
+            allOf:
+            $ref: 'definitions.yaml#/Organization'
+  responses:
+    '201':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/User'
+    '400':
+      description: Fail
+      schema:
+        type: object
+        properties:
+          status: 
+            type: string
+            description: Status
+            example: fail
+            enum:
+              - fail
+          message:
+            type: string
+            description: Message
+            example: User could not be created with received data.
+    '409':
+      description: Conflict
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            description: status
+            example: fail
+            enum:
+              - fail
+          message:
+            type: string
+            description: Message
+            example: This email is already in use.
