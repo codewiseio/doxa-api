@@ -1,0 +1,48 @@
+get:
+  tags:
+    - events
+  summary: Retrieve
+  description: Retrieve
+  operationId: retrieveEvent
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Event'
+patch:
+  tags:
+    - events
+  summary: Update
+  descrition: Update
+  operationId: updateEvent
+  consumes:
+    - application/json
+  produces:
+    - application/json    
+  parameters:
+    - in: body
+      name: body
+      description: Event details
+      required: true
+      schema:
+        type: object
+        allOf:
+          - $ref: 'definitions.yaml#/Event'      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Event'
+delete:
+  tags:
+    - events
+  summary: Delete
+  descrition: Delete 
+  operationId: deleteEvent
+  produces:
+    - application/json       
+  responses:
+    '200':
+      description: Success  

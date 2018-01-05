@@ -1,0 +1,48 @@
+get:
+  tags:
+    - members
+  summary: Retrieve
+  description: Retrieve
+  operationId: retrieveMember
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Member'
+patch:
+  tags:
+    - members
+  summary: Update
+  descrition: Update
+  operationId: updateMember
+  consumes:
+    - application/json
+  produces:
+    - application/json    
+  parameters:
+    - in: body
+      name: body
+      description: Member details
+      required: true
+      schema:
+        type: object
+        allOf:
+          - $ref: 'definitions.yaml#/MemberParameters'  
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Member'
+delete:
+  tags:
+    - members
+  summary: Delete
+  descrition: Delete 
+  operationId: deleteMember
+  produces:
+    - application/json       
+  responses:
+    '200':
+      description: Success  

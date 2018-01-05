@@ -1,0 +1,48 @@
+get:
+  tags:
+    - groups
+  summary: Retrieve
+  description: Retrieve
+  operationId: retrieveGroup
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Group'
+patch:
+  tags:
+    - groups
+  summary: Update
+  descrition: Update
+  operationId: updateGroup
+  consumes:
+    - application/json
+  produces:
+    - application/json    
+  parameters:
+    - in: body
+      name: body
+      description: Group details
+      required: true
+      schema:
+        type: object
+        allOf:
+          - $ref: 'definitions.yaml#/GroupParameters'      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Group'
+delete:
+  tags:
+    - groups
+  summary: Delete
+  descrition: Delete 
+  operationId: deleteGroup
+  produces:
+    - application/json       
+  responses:
+    '200':
+      description: Success  

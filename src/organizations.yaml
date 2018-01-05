@@ -1,0 +1,40 @@
+get:
+  tags:
+    - organizations
+  summary: List
+  produces:
+    - application/json
+  responses:
+    '200':
+      description: Success
+      schema:
+        type: array
+        items: 
+          - $ref: 'definitions.yaml#/Organization'
+post:
+  tags: 
+    - organizations
+  summary: Create
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: body
+      name: body
+      description: Organization details
+      required: true
+      schema:
+        allOf:
+          - $ref: 'definitions.yaml#/OrganizationParameters'
+          - properties:
+              contacts:
+                description: Contact Records
+                type: array
+                items:
+                  $ref: 'definitions.yaml#/Contact'
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Organization'

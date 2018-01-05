@@ -1,0 +1,29 @@
+get:
+  tags:
+    - users
+  summary: Validate Email
+  description: |
+    Check if the supplied email address is valid and not in use
+    by another user.
+  operationId: validateEmail
+  produces:
+    - application/json
+  responses:
+    '200':
+      description: Success
+      schema:
+        type: object
+        properties:
+          valid:
+            description: Valid
+            type: boolean
+            enum:
+              - "true"
+              - "false"
+            example: "false"
+            default: "true"
+          message: 
+            description: Message
+            type: string
+            example: This email is already in use.        
+            default: This email is already in use. 

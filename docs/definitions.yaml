@@ -1,0 +1,226 @@
+Id:
+  type: integer
+  format: int64
+Moniker:
+  type: string
+Attendee:
+  type: object
+  properties:
+    moniker:
+      description: Moniker
+      type: string
+      example: 'attendee:1'
+      format: 'entity:id'  
+    progenitor:
+      description: Person
+      type: entity
+      example: 'event:1'
+    person:
+      description: Person
+      type: entity
+      example: 'person:1'
+    status:
+      description: Status
+      type: string
+      enum:
+        - interested
+        - attending
+        - attended
+      example: interested
+Contact:
+  type: object
+  properties:
+    moniker:
+      description: Moniker
+      type: string
+      example: 'contact:1'
+      format: 'entity:id'  
+    type:
+      description: Type
+      type: string
+      example: Telephone
+      enum:
+        - Telephone
+        - Email
+        - Chat
+        - Profile
+    label:
+      description: Label
+      type: string
+      example: Home
+    value:   
+      description: Value
+      type: string
+      example: '+1 555 555 5555'   
+Event:
+  type: object
+  properties:
+    moniker:
+      description: Moniker
+      type: string
+      example: 'event:1'
+      format: 'entity:id'  
+    name:
+      description: Name
+      type: string
+      example: Regional Volunteer Retrieat
+    description:
+      description: description
+      type: string
+      example: Come and play!
+
+Group:
+  type: object
+  properties:
+    moniker:
+      description: Moniker
+      type: string
+      example: 'group:1'
+      format: 'entity:id'  
+    name:
+      description: Name
+      type: string
+      example: Open Basketball League
+    description:
+      description: description
+      type: string
+      example: Come and play!
+
+Organization:
+  type: object
+  properties:
+    moniker:
+      description: Moniker
+      type: string
+      example: 'organization:1'
+      format: 'entity:id'  
+    name:
+      description: Name
+      type: string
+      example: Boy Scouts of America
+    description:
+      description: Description
+      type: string
+      example: Helping youth is a key to building a more conscientious, responsible and productive society.
+
+Person:
+  type: 'object'
+  properties:
+    moniker:
+      description: Moniker
+      type: string
+      example: 'person:1'
+      format: 'entity:id'
+    first_name:
+      description: First Name
+      type: string
+      example: Elvis
+    middle_name:      
+      description: Middle Name
+      type: string
+      example: Aaraon
+    last_name:      
+      description: Last Name
+      type: string
+      example: Presley
+    birthday:
+      description: Birthday
+      type: string
+      format: date
+      example: '1985-01-08'
+    gender:
+      description: Gender
+      type: string
+      format: varchar(1)
+      enum:
+        - m
+        - f
+      example: m
+Member:
+  type: object
+  properties:
+    moniker:
+      description: Moniker
+      type: string
+      example: 'member:1'
+      format: 'entity:id'  
+    progenitor:
+      description: Group or organization 
+      type: entity
+      example: 'group:42'
+    person:
+      description: Person
+      type: entity
+      example: 'person:1'
+    role:
+      description: A role for defining this members permissions within the application
+      type: string
+      enum:
+        - 0=User
+        - 1=Administrator
+        - 2=Super Administrator
+      default: '0'
+      example: 0
+    involvement:
+      description: Involvement in the group or organization
+      type: string
+      enum:
+        - part-time-member
+        - member
+        - leader
+      default: member
+      example: member
+    join_date:
+      description: Date joining the group or organization
+      type: datetime
+      format: YYYY-MM-DDThh:mm:ss
+      example: '2017-01-01T12:52:00'
+    added_by:
+      description: User adding the person to the group or organization
+      type: id
+      example: 1
+User:
+  type: object
+  properties:
+    moniker:
+      description: Moniker
+      type: string
+      example: user:1
+      format: 'entity:id'
+    email:
+      description: User email address
+      type: string
+      format: email
+      example: john.smith@example.com
+    password:
+      type: string
+      description: 'User password'
+      format: password
+      minLength: 8
+      pattern: '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])'
+      example: drowssaP123
+    status:
+      description: User status
+      type: string
+      enum:
+        - disabled
+        - inactive
+        - active
+      default: inactive
+      example: active
+  xml:
+    name: User
+GenericResponse:
+  type: object
+  properties:
+    status:
+      type: string
+      description: Operation status
+      example: success
+      enum:
+        - success
+        - fail
+    message:
+      type: string
+      description: Message
+      example: This account is now active.

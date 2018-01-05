@@ -1,0 +1,46 @@
+get:
+  tags:
+    - members
+  summary: List
+  description: Retrieve a list of  based on search criteria
+  operationId: listMembers
+  produces:
+    - application/json
+  responses:
+    '200':
+      description: Success
+      schema:
+        type: array
+        items: 
+          - $ref: 'definitions.yaml#/Member'
+
+
+post:
+  tags: 
+    - members
+  summary: Create
+  description: Create a new members
+  operationId: createMember
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: body
+      name: body
+      description: Member details
+      required: true
+      schema:
+        allOf:
+          - $ref: 'definitions.yaml#/MemberParameters'
+    - properties:
+        person:
+          description: Person
+          type: object
+          required: true
+          $ref: 'definitions.yaml#/Person'
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Member'

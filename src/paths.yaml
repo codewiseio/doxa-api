@@ -1,0 +1,59 @@
+
+
+'xsrf-token':
+  $ref: xsrf.yaml
+'/authentication/':
+  $ref: authentication.yaml
+'/attendees/':
+  $ref: attendees.yaml  
+'/attendees/{id}/':
+  $ref: attendees.id.yaml  
+
+
+'/contacts/':
+  $ref: contacts.yaml  
+'/contacts/{id}/':
+  $ref: contacts.id.yaml  
+
+'/events/':
+  $ref: events.yaml  
+'/events/{id}/':
+  $ref: events.id.yaml  
+
+
+'/groups/':
+  $ref: groups.yaml  
+'/groups/{id}/':
+  $ref: groups.id.yaml
+
+'/members/{id}':
+  $ref: members.yaml
+'/members/{moniker}/':
+  $ref: members.id.yaml
+
+
+'/organizations/':
+  $ref: organizations.yaml  
+'/organizations/{id}/':
+  $ref: organizations.id.yaml  
+
+
+
+
+'/users/':
+  $ref: users.yaml
+'/users/{id}/':
+  $ref: users.id.yaml
+'/users/password/':
+  $ref: users.password.yaml
+'/users/email/':
+  $ref: users.email.yaml  
+
+
+
+
+
+
+
+
+

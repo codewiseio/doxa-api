@@ -1,0 +1,70 @@
+get:
+  tags:
+    - users
+  summary: Retrieve User
+  description: Retrieve user account.
+  operatidId: retrieveUser
+  consumes:
+    - application/json
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+          $ref: 'definitions.yaml#/User'            
+patch:
+  tags:
+    - users
+  summary: Update User
+  description: |
+    Update credentials. You must be logged in and supply your password to make changes. 
+    You only need to supply values for the fields you are updating.
+  operatidId: updateUser
+  consumes:
+    - application/json
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+          $ref: 'definitions.yaml#/User'
+    '401':
+      description: Unauthorized
+      schema:
+          type: object
+          properties:
+            status:
+              description: Status
+              example: fail
+              enum:
+                - fail
+            message:
+               description: Message
+               example: Current password required
+delete:
+  tags:
+    - users
+  summary: Delete User
+  description: |
+    Delete a user
+  operatidId: deleteUser  
+  responses:
+    '204':
+      description: Success
+    '401':
+      description: Unauthorized
+      schema:
+          type: object
+          properties:
+            status:
+              description: Status
+              example: fail
+              default: fail
+              enum:
+                - fail
+            message:
+               description: Message
+               example: Current password required
+               default: Current password required

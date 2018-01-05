@@ -1,0 +1,48 @@
+get:
+  tags:
+    - organizations
+  summary: Retrieve
+  description: Retrieve
+  operationId: retrieveOrganization
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Organization'
+patch:
+  tags:
+    - organizations
+  summary: Update
+  descrition: Update
+  operationId: updateOrganization
+  consumes:
+    - application/json
+  produces:
+    - application/json    
+  parameters:
+    - in: body
+      name: body
+      description: Organization details
+      required: true
+      schema:
+        type: object
+        allOf:
+          - $ref: 'definitions.yaml#/OrganizationParameters'      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Organization'
+delete:
+  tags:
+    - organizations
+  summary: Delete
+  descrition: Delete 
+  operationId: deleteOrganization
+  produces:
+    - application/json       
+  responses:
+    '200':
+      description: Success

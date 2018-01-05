@@ -1,0 +1,36 @@
+get:
+  tags:
+    - attendees
+  summary: List
+  description: Retrieve a list of based on search criteria
+  operationId: listAttendees
+  produces:
+    - application/json
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Attendee'
+post:
+  tags: 
+    - attendees
+  summary: Create
+  description: Create a new attendees
+  operationId: createAttendee
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - in: body
+      name: body
+      description: Attendee details
+      required: true
+      schema:
+        allOf:
+          - $ref: 'definitions.yaml#/AttendeeParameters'
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Attendee'

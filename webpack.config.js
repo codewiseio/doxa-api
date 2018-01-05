@@ -16,7 +16,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({template: 'src/index.html'}),
         new CopyWebpackPlugin([
-            { from: 'src/openapi.yaml' }
+            { context: 'src', from: '*.yaml', to: outputDir }
         ])
     ],
     devServer: {

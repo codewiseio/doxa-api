@@ -1,0 +1,47 @@
+get:
+  tags:
+    - attendees
+  summary: Retrieve
+  description: Retrieve
+  operationId: retrieveAttendee
+  produces:
+    - application/json      
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Attendee'
+patch:
+  tags:
+    - attendees
+  summary: Update
+  descrition: Update
+  operationId: updateAttendee
+  consumes:
+    - application/json
+  produces:
+    - application/json    
+  parameters:
+    - in: body
+      name: body
+      description: Attendee details
+      required: true
+      schema:
+        allOf:
+          - $ref: 'definitions.yaml#/AttendeeParameters'   
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: 'definitions.yaml#/Attendee'
+delete:
+  tags:
+    - attendees
+  summary: Delete
+  descrition: Delete 
+  operationId: deleteAttendee
+  produces:
+    - application/json       
+  responses:
+    '200':
+      description: Success
